@@ -1,0 +1,12 @@
+target
+build
+.gradle
+.settings
+.externalToolBuilders
+.project
+.classpath
+.pdm
+*.iml
+*.ipr
+*.iws
+reports

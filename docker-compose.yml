@@ -1,0 +1,15 @@
+app:
+  image: netflixoss/java:8
+  ports:
+      - "4566:4567"
+  volumes:
+      - ./build/install/catan-conquer-server:/code
+  command: /code/bin/catan-conquer-server
+
+  links:
+    - postgres
+
+postgres:
+  image: postgres
+  environment:
+    POSTGRES_PASSWORD: "pass"

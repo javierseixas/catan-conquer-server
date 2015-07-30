@@ -1,4 +1,4 @@
-package com.javierseixas.catan.infrastructure.sql2o.match;
+package com.javierseixas.catan.infrastructure.persistence.sql2o.match;
 
 import com.javierseixas.catan.domain.match.*;
 import com.javierseixas.catan.domain.match.Match;

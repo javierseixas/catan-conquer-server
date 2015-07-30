@@ -3,8 +3,7 @@ package com.javierseixas.catan;
 import com.google.gson.Gson;
 import com.javierseixas.catan.domain.match.Match;
 import com.javierseixas.catan.domain.match.MatchRepository;
-import com.javierseixas.catan.infrastructure.postgres.PostgresConnection;
-import com.javierseixas.catan.infrastructure.sql2o.match.Sql2oMatchRepository;
+import com.javierseixas.catan.infrastructure.persistence.sql2o.match.Sql2oMatchRepository;
 import org.sql2o.Sql2o;
 
 import java.sql.Connection;
@@ -25,29 +24,6 @@ public class App {
 
         get("/hello", (req, res) -> "Hello World");
 
-
-        get("/postgres", (req, res) -> {
-            PostgresConnection postgresConnection = new PostgresConnection();
-            String result = "";
-
-            try{
-                Connection conn = postgresConnection.connect();
-
-                PreparedStatement st = conn.prepareStatement("SELECT * FROM cities");
-                ResultSet rs = st.executeQuery();
-                while (rs.next()) {
-                    result = rs.getString(1);
-                }
-                rs.close();
-                st.close();
-
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return result + "end\n";
-        });
 
         get("/matches", (req, res) -> {
             Gson gson = new Gson();

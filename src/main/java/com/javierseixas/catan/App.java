@@ -22,7 +22,10 @@ public class App {
         MatchRepository matchRepository = new Sql2oMatchRepository(sql2o);
 
 
-        get("/hello", (req, res) -> "Hello World");
+        get("/hello", (req, res) -> {
+            res.type("application/json;charset=utf-8");
+            return "{ \"greeting\": \"Hello World\" }";
+        });
 
 
         get("/matches", (req, res) -> {

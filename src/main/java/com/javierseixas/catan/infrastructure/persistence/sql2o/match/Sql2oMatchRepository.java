@@ -20,7 +20,6 @@ public class Sql2oMatchRepository implements MatchRepository {
     @Override
     public Match create(UUID id, String name) {
         try (Connection conn = sql2o.beginTransaction()) {
-            id = UUID.randomUUID();
             conn.createQuery("insert into matches(id, name) VALUES (:id, :name)")
                     .addParameter("id", id)
                     .addParameter("name", name)

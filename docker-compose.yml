@@ -11,5 +11,7 @@ app:
 
 postgres:
   image: postgres
+  ports:
+      - "5433:5432"
   environment:
     POSTGRES_PASSWORD: "pass"

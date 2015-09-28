@@ -17,7 +17,7 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args) {
 
-        Sql2o sql2o = new Sql2o("jdbc:postgresql://192.168.59.103:5432/postgres", "postgres", "pass");
+        Sql2o sql2o = new Sql2o("jdbc:postgresql://postgres/postgres", "postgres", "pass");
 
         MatchRepository matchRepository = new Sql2oMatchRepository(sql2o);
 
@@ -49,7 +49,7 @@ public class App {
             Match matchSaved = matchRepository.create(UUID.randomUUID(), match.name());
 
             res.type("application/json;charset=utf-8");
-            res.status(200);
+            res.status(201);
             return "{ \"id\": \"" + matchSaved.id().toString() + "\" }";
         });
     }
